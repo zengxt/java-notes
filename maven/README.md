@@ -1,34 +1,52 @@
+# Maven简单入门
+
 ## 一、Maven简介及环境搭建
+
 ### 1、Maven简介
+
 &emsp;&emsp;Maven是基于项目对象模型（POM），可以通过一小段描述信息来管理项目的搭建、报告和文档的软件项目管理工具。
 &emsp;&emsp;POM是项目对象模型(Project Object Model)的简称，它是Maven项目中的文件，使用XML表示，名称叫做pom.xml。在Maven中，当谈到Project的时候，不仅仅是一堆包含代码的文件。一个Project往往包含一个配置文件，包括了与开发者有关的、缺陷跟踪系统、组织与许可、项目的URL、项目依赖、以及其他。它包含了所有与这个项目相关的东西。事实上，在Maven世界中，project可以什么都没有，甚至没有代码，但是必须包含pom.xml文件。
 <br/>
 
+
+
 ### 2、Maven下载及环境配置
 **1）、Maven的官网：http://maven.apache.org/。**
 ![](1.jpg)
-&emsp;&emsp;将Maven的压缩包解压之后的目录如下：
+
+将Maven的压缩包解压之后的目录如下：
+
 ![](2.jpg)
-&emsp;&emsp;bin目录包含mvn的运行脚本，m2.conf：配置文件；
-&emsp;&emsp;boot目录包含一个类加载器的框架，Maven使用它来加载自己的类库；
-&emsp;&emsp;conf目录是一些配置文件；
-&emsp;&emsp;lib目录下包含一些类库，自己运行的包括第三方的一些类库。
-<br/>
+
+- bin目录包含mvn的运行脚本，m2.conf：配置文件；
+
+- boot目录包含一个类加载器的框架，Maven使用它来加载自己的类库；
+
+- conf目录是一些配置文件；
+- lib目录下包含一些类库，自己运行的包括第三方的一些类库。
+  <br/>
 
 **2）、Maven环境变量的配置：**
-&emsp;&emsp;M2_HOME变量：
+M2_HOME变量：
+
 ![](3.jpg)
-&emsp;&emsp;PATH变量：
+
+PATH变量：
+
 ![](4.jpg)
+
 <br/>
 
 **3）、验证环境变量是否配置成功：**
-&emsp;&emsp;命令提示符下输入：mvn -v
+命令提示符下输入：mvn -v
+
 ![](5.jpg)
+
 <br/>
 
 ## 二、Maven的Hello world程序
-**1、Maven项目的目录结构**
+### **1、Maven项目的目录结构**
+
 ```java
 src
 	-main
@@ -41,10 +59,12 @@ src
 ```
 <br/>
 
-**2、创建项目**
+### **2、创建项目**
+
 ![](6.jpg)
-&emsp;&emsp;main和test目录下都含有java目录。
-&emsp;&emsp;在main的java目录下，新建类包的目录结构，并编写HelloWorld.java。
+
+main和test目录下都含有java目录。在main的java目录下，新建类包的目录结构，并编写HelloWorld.java。
+
 ```java
 package com.zxt.model;
 
@@ -55,7 +75,8 @@ public class HelloWorld {
 	}
 }
 ```
-&emsp;&emsp;在test的java目录下，新建类包的目录结构，并编写测试类HelloWorldTest.java。
+在test的java目录下，新建类包的目录结构，并编写测试类HelloWorldTest.java。
+
 ```java
 package com.zxt.model;
 
@@ -72,23 +93,27 @@ public class HelloWorldTest {
 ```
 <br/>
 
-**3、pom.xml**
+### **3、pom.xml**
+
 &emsp;&emsp;创建pom.xml文件管理项目（位于项目的根目录下），pom文件的格式可以从其他项目中拷贝过来，例如spring，struts等。
-<font color="red">
-&emsp;&emsp;<groupId> groupId的值就是项目的包名</groupId >
-&emsp;&emsp;<artifactId> artifactId是模块的名</artifactId >
-&emsp;&emsp;<version>版本</version >
-</font>
-**
+
+​		<font color='red'>\<groupId> groupId的值就是项目的包名\</groupId></font>
+
+​		<font color='red'>\<artifactId> artifactId是模块的名\</artifactId ></font>
+
+​		<font color='red'>\<version>版本\</version ></font>
+
+```xml
 <!-- 项目依赖包的管理 -->
-&emsp;&emsp;<dependencies>
-&emsp;&emsp;	<dependency>
-&emsp;&emsp;		<groupId>junit</groupId >
-&emsp;&emsp;		<artifactId> junit </artifactId >
-&emsp;&emsp;		<version>4.12</version >
-&emsp;&emsp;	</dependency>
-&emsp;&emsp;</dependencies>
-**
+<dependencies>
+	<dependency>
+		<groupId>junit</groupId >
+		<artifactId> junit </artifactId >
+		<version>4.12</version >
+	</dependency>
+</dependencies>
+```
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 
@@ -97,7 +122,7 @@ public class HelloWorldTest {
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
             http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <!-- Maven的版本，固定4.0.0 -->
+	<!-- Maven的版本，固定4.0.0 -->
     <modelVersion>4.0.0</modelVersion>
 
 	<!-- 项目描述 -->
@@ -113,34 +138,43 @@ public class HelloWorldTest {
 			<version>4.12</version >
 		</dependency>
 	</dependencies>
-
 </project>
 ```
 <br/>
 
-**4、编译运行**
-&emsp;&emsp;在命令提示符中切换到项目目录，并使用mvn compile命令编译项目：
+### **4、编译运行**
+
+在命令提示符中切换到项目目录，并使用mvn compile命令编译项目：
+
 ![](7.jpg)
+
 ![](8.jpg)
 
-&emsp;&emsp;编译成功后，运行mvn test执行测试用例：
+
+
+编译成功后，运行mvn test执行测试用例：
+
 ![](9.jpg)
 
-&emsp;&emsp;对项目进行打包，mvn package。
+对项目进行打包，mvn package。
+
 ![](10.jpg)
+
 <br/>
 
 ## 三、Maven常用的构建命令
-<font color="red">mvn</font> –v 查看maven版本；
-&emsp;&emsp;compile 编译maven项目；
-&emsp;&emsp;test 运行测试；
-&emsp;&emsp;package 打包，maven项目；
-&emsp;&emsp;clean 删除target文件（java源代码编译生成的二进制字节码，项目说明文档等）；
-&emsp;&emsp;install 安装jar包到本地仓库中。
+- <font color="red">mvn –v  </font>查看maven版本；
+- <font color="red">mvn compile </font>编译maven项目；
+- <font color="red">mvn test </font>运行测试；
+- <font color="red">mvn package </font>打包maven项目；
+- <font color="red">mvn clean </font>删除target文件（java源代码编译生成的二进制字节码，项目说明文档等）；
+- <font color="red">mvn install </font>安装jar包到本地仓库中。
 
 ### 1、install命令的使用实例
 1）、创建类似于maven01的项目maven02。其源代码及测试代码如下：
+
 Speak.java
+
 ```java
 package com.zxt.model02;
 
@@ -154,6 +188,7 @@ public class Speak {
 }
 ```
 SpeakTest.java
+
 ```java
 package com.zxt.model;
 
@@ -169,54 +204,75 @@ public class SpeakTest {
 }
 ```
 可以看出在Speak.java中引用了maven01项目中的HelloWorld类。这时候直接编译maven02项目，会出错：
+
 ![](11.jpg)
 <br/>
 
 &emsp;&emsp;2）、切换到maven01项目的目录下，使用mvn install命令，将maven01的jar包安装到本地仓库中，并在maven02的pom.xml文件中添加maven01的jar包依赖，再来编译maven02，则可以成功。
-&emsp;&emsp;<dependency>
-&emsp;&emsp;	<groupId>com.zxt.model</groupId>
-&emsp;&emsp;	<artifactId>maven01-model</artifactId>
-&emsp;&emsp;	<version>0.0.1-SNAPSHOT</version>
-&emsp;&emsp;</dependency>
-&emsp;&emsp;3）、Maven项目的jar包依赖通过<dependency>标签来管理，当程序中引用某个jar包中的类，则首先会在pom.xml文件的依赖中查找，如果在pom.xml文件中有相应的<dependency>，则会在本地仓库中查找相关的jar文件，如果本地仓库中没有，则会联网向Maven的中央仓库中查找，并将相关文件下载到本地仓库中。
+
+```xml
+<dependency>
+	<groupId>com.zxt.model</groupId>
+	<artifactId>maven01-model</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+</dependency>
+```
+
+&emsp;&emsp;3）、Maven项目的jar包依赖通过\<dependency>标签来管理，当程序中引用某个jar包中的类，则首先会在pom.xml文件的依赖中查找，如果在pom.xml文件中有相应的\<dependency>，则会在本地仓库中查找相关的jar文件，如果本地仓库中没有，则会联网向Maven的中央仓库中查找，并将相关文件下载到本地仓库中。
 <br/>
 
 ### 2、创建项目的两种方式
 &emsp;&emsp;可以使用命令直接生成项目的目录结构：
+
 &emsp;&emsp;1）mvn archetype:generate  按照提示进行选择，设置。
+
 &emsp;&emsp;2）mvn archetype:generate –DgroupId=组织名（公司网址反写+项目名）
-							-DartifactId=项目名-模块名
-							-Dversion=版本号
-							-Dpackage=代码所在包名
+
+​					-DartifactId=项目名-模块名
+
+​					-Dversion=版本号
+
+​					-Dpackage=代码所在包名
+
 ![](12.jpg)
 <br/>
- 
+
 ## 四、Maven仓库中的坐标
-&emsp;&emsp;1、Maven项目中的依赖一般称为构件，它用**Maven坐标**来表示：
+&emsp;&emsp;**1、Maven项目中的依赖一般称为构件，它用Maven坐标来表示：**
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
             http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>org.codehaus.mojo</groupId>
     <artifactId>my-project</artifactId>
     <version>1.0</version>
+
 </project>
 ```
 &emsp;&emsp;上面的POM定义的是Maven2&3都承认的最小部分。groupId:artifactId:version是必须的字段(尽管在继承中groupId和version不需要明确指出)。这三个字段就像地址和邮戳，它标记了构件在仓库中的特定位置，就像Maven projects的坐标系统一样。
 <br/>
 
 &emsp;&emsp;**2、Maven的仓库分为本地仓库和中央仓库。**
+
 &emsp;&emsp;本地仓库默认保存在系统的用户目录的.m2目录中：C:\Users\Administrator\.m2\repository。
+
 &emsp;&emsp;一般情况下，我们不希望数据保存在C盘，因此可以进行本地仓库位置的修改，在Maven的conf目录下，打开settings.xml文件，找到：
-&emsp;&emsp;<font color="red"><localRepository>/path/to/local/repo</localRepository></font>
+
+&emsp;&emsp;<font color="red">\<localRepository>/path/to/local/repo\</localRepository></font>
+
 &emsp;&emsp;取消注释，配置自己的仓库位置：
-&emsp;&emsp;<localRepository>E:/Maven/repo</localRepository>
+
+&emsp;&emsp;\<localRepository>E:/Maven/repo\</localRepository>
+
 <br/>
 
 &emsp;&emsp;**3、镜像仓库**
+
 &emsp;&emsp;因为Maven的中央仓库在国外，因此有可能会使用到镜像仓库，同样在settings.xml文件中进行配置：
+
 ```xml
 <mirrors>
 	<mirror>
@@ -232,10 +288,13 @@ public class SpeakTest {
 <br/>
 
 &emsp;&emsp;**4、settings.xml**
+
 &emsp;&emsp;此外由于settings.xml中有较多的用户设置，因此可以将它单独拿出，放到用户自己的路径中，防止Maven更新时被覆盖。
 
 &emsp;&emsp;**5、Maven在eclipse中的使用。**
+
 &emsp;&emsp;在高版本的eclipse中，默认已经有Maven的插件，不需要自己安装。因此配置好自己的Maven目录以及自定义的设置文件即可。可以在设置文件settings.xml中设置Maven使用的JDK的版本：
+
 ```xml
 <profile>
 	<id>jdk-1.8</id>
@@ -253,17 +312,18 @@ public class SpeakTest {
 <br/>
 
 ## 五、Maven生命周期
-**clean&emsp;&emsp;清理项目**
-&emsp;&emsp;pre-clean执行清理前的工作
-&emsp;&emsp;clean清理上一次构建生成的所有文件
-&emsp;&emsp;post-clean执行清理后的文件
-**default&emsp;&emsp;构建项目（最核心）**
-&emsp;&emsp;compile、test、package、install等.
-**site&emsp;&emsp;生成项目站点**
-&emsp;&emsp;pre-site在生成项目站点前要完成的工作
-&emsp;&emsp;site生成项目的站点文档
-&emsp;&emsp;post-site在生成项目站点后要完成的工作
-&emsp;&emsp;site-deploy发布生成的站点到服务器上
+1. **clean：清理项目**
+   - pre-clean执行清理前的工作
+   - clean清理上一次构建生成的所有文件
+   - post-clean执行清理后的文件
+2. **default：构建项目（最核心）**
+   - compile、test、package、install等.
+3. **site：生成项目站点**
+   - pre-site在生成项目站点前要完成的工作
+   - site生成项目的站点文档
+   - post-site在生成项目站点后要完成的工作
+   - site-deploy发布生成的站点到服务器上
+
 <br/>
 
 ## 六、pom.xml文件详解
@@ -405,11 +465,19 @@ public class SpeakTest {
 </project>
 ```
 &emsp;&emsp;一般来说，上面的几个配置项对任何项目都是必不可少的，定义了项目的基本属性。
+
 &emsp;&emsp;这里有必要对一个不太常用的属性classifier做一下解释，因为有时候引用某个jar包，classifier不写的话会报错。
+
 &emsp;&emsp;classifier元素用来帮助定义构件输出的一些附属构件。附属构件与主构件对应，比如主构件是 kimi-app-2.0.0.jar，该项目可能还会通过使用一些插件生成，如kimi-app-2.0.0-javadoc.jar （Java文档）、 kimi-app-2.0.0-sources.jar（Java源代码）这样两个附属构件。这时候，javadoc、sources就是这两个附属构件的classifier，这样附属构件也就拥有了自己唯一的坐标。
+
 &emsp;&emsp;classifier的用途在于：
+
 &emsp;&emsp;1、maven download javadoc / sources jar包的时候，需要借助classifier指明要下载那个附属构件。
-&emsp;&emsp;2、引入依赖的时候，有时候仅凭groupId、artifactId、version无法唯一的确定某个构件，需要借助classifier来进一步明确目标。比如JSON-lib，有时候会同一个版本会提供多个jar包，在JDK1.5环境下是一套，在JDK1.3环境下是一套：引用它的时候就要注明JDK版本，否则maven不知道你到底需要哪一套jar包：<classifier>jdk15</classifier>。
+
+&emsp;&emsp;2、引入依赖的时候，有时候仅凭groupId、artifactId、version无法唯一的确定某个构件，需要借助classifier来进一步明确目标。比如JSON-lib，有时候会同一个版本会提供多个jar包，在JDK1.5环境下是一套，在JDK1.3环境下是一套：引用它的时候就要注明JDK版本，否则maven不知道你到底需要哪一套jar包：
+
+​		\<classifier>jdk15\</classifier>。
+
 <br/>
 
 ### 3、构建过程设置
