@@ -474,9 +474,9 @@ public class SpeakTest {
 
 &emsp;&emsp;1、maven download javadoc / sources jar包的时候，需要借助classifier指明要下载那个附属构件。
 
-&emsp;&emsp;2、引入依赖的时候，有时候仅凭groupId、artifactId、version无法唯一的确定某个构件，需要借助classifier来进一步明确目标。比如JSON-lib，有时候会同一个版本会提供多个jar包，在JDK1.5环境下是一套，在JDK1.3环境下是一套：引用它的时候就要注明JDK版本，否则maven不知道你到底需要哪一套jar包：
+&emsp;&emsp;2、引入依赖的时候，有时候仅凭groupId、artifactId、version无法唯一的确定某个构件，需要借助classifier来进一步明确目标。比如JSON-lib，有时候会同一个版本会提供多个jar包，在JDK1.5环境下是一套，在JDK1.3环境下是一套：引用它的时候就要注明JDK版本，否则maven不知道你到底需要哪一套jar包：\
 
-​		\<classifier>jdk15\</classifier>。
+​        \<classifier>jdk15\</classifier>。
 
 <br/>
 
